@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ferry Rachman Kurniawan | Embedded &amp; Mobile Engineer</title>
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png"/>
+<link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png"/>
+<link rel="manifest" href="images/favicon/site.webmanifest"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-lowest": "#0e0e0e",
+                  "surface-dim": "#131313",
+                  "on-error-container": "#ffdad6",
+                  "on-secondary-fixed-variant": "#005236",
+                  "error-container": "#93000a",
+                  "surface": "#131313",
+                  "surface-container": "#201f1f",
+                  "inverse-on-surface": "#313030",
+                  "on-primary-fixed": "#001a42",
+                  "primary-container": "#4d8eff",
+                  "surface-container-high": "#2a2a2a",
+                  "tertiary": "#ffb786",
+                  "outline": "#8c909f",
+                  "on-primary-container": "#00285d",
+                  "on-surface": "#e5e2e1",
+                  "on-tertiary-fixed-variant": "#723600",
+                  "secondary-fixed": "#6ffbbe",
+                  "tertiary-fixed": "#ffdcc6",
+                  "on-surface-variant": "#c2c6d6",
+                  "primary-fixed-dim": "#adc6ff",
+                  "primary": "#adc6ff",
+                  "on-error": "#690005",
+                  "on-tertiary": "#502400",
+                  "tertiary-container": "#df7412",
+                  "on-tertiary-container": "#461f00",
+                  "on-secondary-fixed": "#002113",
+                  "on-primary-fixed-variant": "#004395",
+                  "background": "#131313",
+                  "on-primary": "#002e6a",
+                  "surface-bright": "#3a3939",
+                  "inverse-surface": "#e5e2e1",
+                  "error": "#ffb4ab",
+                  "on-tertiary-fixed": "#311400",
+                  "on-secondary": "#003824",
+                  "secondary": "#4edea3",
+                  "surface-container-low": "#1c1b1b",
+                  "surface-container-highest": "#353534",
+                  "primary-fixed": "#d8e2ff",
+                  "on-background": "#e5e2e1",
+                  "surface-variant": "#353534",
+                  "inverse-primary": "#005ac2",
+                  "secondary-fixed-dim": "#4edea3",
+                  "on-secondary-container": "#00311f",
+                  "surface-tint": "#adc6ff",
+                  "secondary-container": "#00a572",
+                  "outline-variant": "#424754",
+                  "tertiary-fixed-dim": "#ffb786"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "fontFamily": {
+                  "headline": ["Inter", "sans-serif"],
+                  "body": ["Inter", "sans-serif"],
+                  "label": ["JetBrains Mono", "monospace"]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="selection:bg-primary/30 selection:text-primary">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md border-b border-[#E5E2E1]/10">
+<div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+<img src="images/FRK-BG-SMALL.svg" alt="FRK" class="h-10 w-auto">
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#projects">Projects</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#experience">Experience</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#skills">Skills</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#contact">Contact</a>
+<button class="bg-primary hover:bg-[#4D8EFF]/10 text-on-primary-container px-5 py-2 rounded-sm font-['Inter'] font-medium text-sm transition-all duration-200" onclick="openDownloadModal()">Resume</button>
+</div>
+<div class="md:hidden">
+<button id="mobile-menu-toggle" class="cursor-pointer">
+<span class="material-symbols-outlined text-[#E5E2E1]">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden fixed top-20 left-0 right-0 bg-[#131313]/95 backdrop-blur-md border-b border-[#E5E2E1]/10">
+<div class="flex flex-col gap-4 px-8 py-6">
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#projects">Projects</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#experience">Experience</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#skills">Skills</a>
+<a class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] transition-colors font-['Inter'] font-medium text-sm tracking-wide" href="#contact">Contact</a>
+<button class="bg-primary hover:bg-[#4D8EFF]/10 text-on-primary-container px-5 py-2 rounded-sm font-['Inter'] font-medium text-sm transition-all duration-200 text-left" onclick="openDownloadModal()">Resume</button>
+</div>
+</div>
+</div>
+</nav>
+<main class="technical-grid min-h-screen pt-20">
+<!-- Hero Section -->
+<section class="relative px-8 pt-32 pb-24 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-8">
+<div class="space-y-2">
+<p class="font-['JetBrains_Mono'] text-xs uppercase tracking-[0.3em] text-primary">System Architecture &amp; Design</p>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-none">
+            Ferry Rachman<br/>Kurniawan
+          </h1>
+</div>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-xl font-light leading-relaxed">
+          Building from the chip to the screen — <span class="text-secondary font-medium">Embedded systems</span> &amp; <span class="text-primary font-medium">cross-platform mobile apps</span>.
+        </p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-[#4EDE93] animate-pulse"></div>
+<span class="font-['JetBrains_Mono'] text-[0.65rem] text-[#4EDE93] uppercase tracking-widest">Available for Hire</span>
+</div>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="bg-primary text-on-primary-container px-8 py-4 rounded-sm font-medium hover:bg-primary-container transition-all flex items-center gap-2" href="#projects">
+            View Projects <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<a class="ghost-border px-8 py-4 rounded-sm text-on-surface hover:bg-surface-container-high transition-all" href="#contact">
+            Contact Me
+          </a>
+<button class="font-['JetBrains_Mono'] text-sm text-primary hover:underline underline-offset-8 transition-all px-4 py-4" onclick="openDownloadModal()">
+            Download CV.pdf
+          </button>
+</div>
+</div>
+<div class="relative w-full max-w-md aspect-square md:aspect-[4/5] bg-surface-container-low rounded-sm overflow-hidden ghost-border group">
+<!-- <img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="Professional studio portrait of a young computer engineer with a focused expression, neutral dark background, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwDRrD_MTLQyTyPeoGli9_josUA2o77xrv8v31Zy2GiQHY927zCKw8HfkFZFeJrjOpRgky9PunWm-m7SupgPQsCzrgaoNCFBfmm4gGUsQ6r-AF6qnkLo7WtSQL0qSsIkGGAkrdBzSzRmpcWOMhWomLfpPeFFsEFAmmasvVfg2HC6QrIbyK_WYKzM3-aT1S5sv3SNWS1Y_pJB1MN06Fy5lUdaoK39LY2D-nt-BNcG72ctWO3Tlpp4BVHt5VM0l13vkf4-m9sdk9KvE"/> -->
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="Professional studio portrait of a young computer engineer with a focused expression, neutral dark background, cinematic lighting" src="images/FRK-PROFILE.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div class="font-['JetBrains_Mono'] text-[0.65rem] uppercase text-on-surface/50 leading-tight">
+            System Identity<br/>Verified Status: Active
+          </div>
+<div class="h-1 w-12 bg-primary"></div>
+</div>
+</div>
+</section>
+<!-- Achievements Banner -->
+<div class="w-full bg-surface-container-lowest border-y border-outline-variant/10 py-6 overflow-hidden">
+<div class="flex carousel-scroll gap-12 px-8">
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-primary">🏆</span> Finalist Gemastik 2025
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-secondary">🌏</span> Top 50 APAC — Google Solution Challenge 2025
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-primary">🥇</span> Special Winner — Binus IoT Expo 2024
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-secondary">⚙️</span> Best Microcontroller Final Project
+</div>
+<!-- Duplicate items for seamless loop -->
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-primary">🏆</span> Finalist Gemastik 2025
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-secondary">🌏</span> Top 50 APAC — Google Solution Challenge 2025
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-primary">🥇</span> Special Winner — Binus IoT Expo 2024
+</div>
+<div class="carousel-item flex items-center gap-3 font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-on-surface-variant">
+<span class="text-secondary">⚙️</span> Best Microcontroller Final Project
+</div>
+</div>
+</div>
+<!-- About Section -->
+<section class="px-8 py-32 max-w-7xl mx-auto grid md:grid-cols-12 gap-12">
+<div class="md:col-span-4">
+<h2 class="text-2xl font-bold tracking-tight border-l-4 border-primary pl-4">About the Engineer</h2>
+</div>
+<div class="md:col-span-8 space-y-12">
+<div class="space-y-6">
+<p class="text-xl leading-relaxed text-on-surface-variant font-light">
+            I am a Computer Engineering graduate from <span class="text-on-surface font-medium underline decoration-primary/30">Bina Nusantara University</span>, specializing in the intersection of hardware and software. My work focuses on creating seamless data flow between low-level microcontrollers and high-level mobile interfaces.
+          </p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-3 px-6 py-3 bg-primary/5 border border-primary/20 rounded-sm">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+<span class="font-['JetBrains_Mono'] text-xs font-medium text-primary">📱 Flutter &amp; Mobile</span>
+</div>
+<div class="flex items-center gap-3 px-6 py-3 bg-secondary/5 border border-secondary/20 rounded-sm">
+<span class="material-symbols-outlined text-secondary">memory</span>
+<span class="font-['JetBrains_Mono'] text-xs font-medium text-secondary">🔧 IoT &amp; Embedded</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section (Asymmetric Bento) -->
+<section class="px-8 py-32 max-w-7xl mx-auto space-y-16" id="projects">
+<div class="flex justify-between items-end">
+<h2 class="text-4xl md:text-5xl font-bold tracking-tighter">Featured Implementations</h2>
+<span class="font-['JetBrains_Mono'] text-xs text-on-surface/40 uppercase">Selected Projects 01-02</span>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Project 1: Minder -->
+<a href="https://github.com/ferrykurniawan28/minder-HW.git" target="_blank" class="group cursor-pointer">
+<article class="bg-surface-container-low p-8 rounded-sm ghost-border flex flex-col gap-8 transition-all hover:bg-surface-container h-full">
+<div class="relative w-full aspect-video bg-surface rounded-sm overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Modern high-tech workspace with dual monitors showing Flutter code and an ESP32 microcontroller with colorful jumper wires on a desk" src="images/MINDER.webp"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-['JetBrains_Mono'] rounded-sm">MOBILE</span>
+<span class="px-3 py-1 bg-secondary/20 text-secondary text-[10px] font-['JetBrains_Mono'] rounded-sm">EMBEDDED</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="text-2xl font-bold tracking-tight">Minder</h3>
+<span class="material-symbols-outlined text-on-surface/20 group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">
+              An end-to-end IoT tracking ecosystem using ESP32 and Flutter, leveraging MQTT for real-time data sync and Azure for cloud storage.
+            </p>
+<div class="flex flex-wrap gap-2 pt-4">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">Flutter</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">Gin (Go)</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">ESP32</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">MQTT</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">Azure</span>
+</div>
+</div>
+</article>
+</a>
+<!-- Project 2: Minder App  -->
+<!-- TODO: Replace with actual project details -->
+<a href="https://github.com/ferrykurniawan28/medicine_reminder_v2.git" target="_blank" class="group cursor-pointer">
+<article class="bg-surface-container-low p-8 rounded-sm ghost-border flex flex-col gap-8 transition-all hover:bg-surface-container h-full">
+<div class="relative w-full aspect-video bg-surface rounded-sm overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Digital security interface overlay on a smart door lock mechanism, glowing blue light, futuristic facial recognition visualization" src="images/MINDER-APP.webp"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<span class="px-3 py-1 bg-secondary/20 text-secondary text-[10px] font-['JetBrains_Mono'] rounded-sm">IoT</span>
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-['JetBrains_Mono'] rounded-sm">AI</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="text-2xl font-bold tracking-tight">Minder App</h3>
+<span class="material-symbols-outlined text-on-surface/20 group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+<p class="text-sm text-on-surface-variant font-light">
+              Autonomous security system with GNSS tracking and Cloud-based Face Recognition. Integrates Firebase for instantaneous alerts.
+            </p>
+<div class="flex flex-wrap gap-2 pt-4">
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">ESP32</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">Flutter</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">Firebase</span>
+<span class="font-['JetBrains_Mono'] text-[10px] uppercase text-on-surface/40 px-2 py-1 border border-outline-variant/30">GNSS</span>
+</div>
+</div>
+</article>
+</a>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="px-8 py-32 bg-surface-container-low" id="experience">
+<div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-12">
+<div class="md:col-span-4">
+<h2 class="text-2xl font-bold tracking-tight">Professional Tenure</h2>
+</div>
+<div class="md:col-span-8">
+<div class="group bg-surface p-12 rounded-sm ghost-border relative overflow-hidden transition-all hover:border-primary/40">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-9xl">work</span>
+</div>
+<div class="space-y-6 relative z-10">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h3 class="text-2xl font-bold text-on-surface">Zegen Solusi Mandiri</h3>
+<p class="text-primary font-['JetBrains_Mono'] text-sm">Mobile Programmer Intern</p>
+</div>
+<div class="text-on-surface/40 font-['JetBrains_Mono'] text-xs">
+                  FEB 2025 – JUL 2025
+                </div>
+</div>
+<ul class="space-y-4 text-on-surface-variant font-light leading-relaxed list-none">
+<li class="flex gap-4">
+<span class="text-primary material-symbols-outlined text-sm">terminal</span>
+                  Architected cross-platform features using Flutter and optimized performance for enterprise mobile solutions.
+                </li>
+<li class="flex gap-4">
+<span class="text-primary material-symbols-outlined text-sm">terminal</span>
+                  Collaborated on large-scale state management implementation utilizing BLoC patterns.
+                </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="px-8 py-32 max-w-7xl mx-auto space-y-16" id="skills">
+<div class="text-center">
+<h2 class="text-4xl font-bold tracking-tighter">Stack &amp; Capabilities</h2>
+<p class="font-['JetBrains_Mono'] text-xs text-primary mt-2">TECHNICAL_SPECIFICATION_V2.0</p>
+</div>
+<div class="grid md:grid-cols-2 gap-px bg-outline-variant/10">
+<!-- Mobile Skill Column -->
+<div class="bg-surface p-12 space-y-8">
+<div class="flex items-center gap-4">
+<span class="p-3 bg-primary/10 rounded-sm">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+</span>
+<h3 class="text-xl font-bold tracking-tight uppercase tracking-wider">Mobile Systems</h3>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">FRAMEWORK</p>
+<p class="font-medium">Flutter / Dart</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">STATE MGMT</p>
+<p class="font-medium">Bloc, GetX</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">BACKEND INFRA</p>
+<p class="font-medium">Firebase, FCM</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">DATA FLOW</p>
+<p class="font-medium">REST API, JSON</p>
+</div>
+</div>
+</div>
+<!-- Embedded Skill Column -->
+<div class="bg-surface p-12 space-y-8 border-l border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="p-3 bg-secondary/10 rounded-sm">
+<span class="material-symbols-outlined text-secondary">memory</span>
+</span>
+<h3 class="text-xl font-bold tracking-tight uppercase tracking-wider">Embedded Engineering</h3>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-4">
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">LANGUAGES</p>
+<p class="font-medium">C / C++</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">HARDWARE</p>
+<p class="font-medium">ESP32, Arduino</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">PROTOCOL</p>
+<p class="font-medium">MQTT, I2C, SPI</p>
+</div>
+<div>
+<p class="font-['JetBrains_Mono'] text-[10px] text-on-surface/40 mb-1">DESIGN</p>
+<p class="font-medium">Fusion 360, PCB</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Terminal Component (Signature) -->
+<section class="px-8 pb-32 max-w-5xl mx-auto">
+<div class="bg-surface-container-highest rounded-sm p-1 ghost-border">
+<div class="bg-surface-container-lowest p-6 rounded-sm">
+<div class="flex gap-2 mb-6">
+<div class="w-2.5 h-2.5 rounded-full bg-error"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<div class="font-['JetBrains_Mono'] text-sm space-y-2">
+<p class="text-on-surface/40 flex gap-4"><span>$</span> <span>system-status --verbose</span></p>
+<p class="text-secondary">[OK] Hardware: ESP32-WROOM-32E ready.</p>
+<p class="text-primary">[OK] Software: Flutter SDK 3.41.6 linked.</p>
+<p class="text-on-surface">[INFO] Deploying portfolio v1.0.4...</p>
+<p class="text-on-surface/40 animate-pulse">_</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- CV Download Modal -->
+<div id="downloadModal" class="modal">
+<div class="modal-content">
+<span class="modal-close" onclick="closeDownloadModal()">&times;</span>
+<h2 class="text-xl font-bold text-on-surface mb-4 pt-2">Select CV to Download</h2>
+<p class="text-on-surface-variant text-sm mb-6">Choose which specialization CV you'd like to download:</p>
+<button class="modal-option w-full bg-primary/10 border border-primary/40 text-on-surface hover:bg-primary/20" onclick="downloadCV('embedded')">
+<div class="font-['Inter'] font-medium text-primary">📱 Embedded Systems</div>
+<div class="font-['JetBrains_Mono'] text-xs text-on-surface-variant mt-1">CV-Ferry-Rachman-Kurniawan-embedded.pdf</div>
+</button>
+<button class="modal-option w-full bg-secondary/10 border border-secondary/40 text-on-surface hover:bg-secondary/20" onclick="downloadCV('mobile')">
+<div class="font-['Inter'] font-medium text-secondary">⚙️ Mobile Development</div>
+<div class="font-['JetBrains_Mono'] text-xs text-on-surface-variant mt-1">CV-Ferry-Rachman-Kurniawan-mobile.pdf</div>
+</button>
+</div>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 px-8 bg-[#1C1B1B]" id="contact">
+<div class="max-w-7xl mx-auto">
+<!-- Desktop Layout -->
+<div class="hidden md:flex flex-col items-center justify-center gap-8">
+<div class="space-y-1 text-center">
+<div class="font-['Inter'] font-bold text-lg text-[#E5E2E1]">FRK.DEV</div>
+<!-- <p class="font-['JetBrains_Mono'] text-[0.7rem] text-[#E5E2E1]/40 uppercase tracking-widest leading-tight">
+          © 2026 Ferry Rachman Kurniawan.<br/>Engineered with Precision.
+        </p> -->
+</div>
+<div class="flex gap-8 items-center justify-center">
+<a class="text-[#E5E2E1]/40 hover:text-[#4EDE93] transition-colors font-['JetBrains_Mono'] text-[0.75rem] uppercase tracking-widest" href="mailto:kurniawan.ferry.rach@gmail.com">Email</a>
+<div class="w-px h-6 bg-outline-variant/20"></div>
+<a class="text-[#E5E2E1]/40 hover:text-[#4EDE93] transition-colors font-['JetBrains_Mono'] text-[0.75rem] uppercase tracking-widest" href="https://www.linkedin.com/in/kurniawanferry/" target="_blank">LinkedIn</a>
+<div class="w-px h-6 bg-outline-variant/20"></div>
+<a class="text-[#E5E2E1]/40 hover:text-[#4EDE93] transition-colors font-['JetBrains_Mono'] text-[0.75rem] uppercase tracking-widest" href="https://github.com/ferrykurniawan28" target="_blank">GitHub</a>
+<div class="w-px h-6 bg-outline-variant/20"></div>
+<a class="text-[#E5E2E1]/40 hover:text-[#4EDE93] transition-colors font-['JetBrains_Mono'] text-[0.75rem] uppercase tracking-widest" href="https://wa.me/6282125230439" target="_blank">WhatsApp</a>
+</div>
+<p class="font-['JetBrains_Mono'] text-[0.7rem] text-[#E5E2E1]/40 uppercase tracking-widest leading-tight text-center">
+          © 2026 Ferry Rachman Kurniawan.<br/>Engineered with Precision.
+        </p>
+</div>
+<!-- Mobile Layout -->
+<div class="md:hidden flex flex-col gap-8">
+<div class="space-y-4">
+<div class="font-['Inter'] font-bold text-lg text-[#E5E2E1] text-center">FRK.DEV</div>
+<!-- <p class="font-['JetBrains_Mono'] text-[0.65rem] text-[#E5E2E1]/40 uppercase tracking-widest leading-tight text-center">
+          © 2026 Ferry Rachman Kurniawan.<br/>Engineered with Precision.
+        </p> -->
+</div>
+<div class="grid grid-cols-2 gap-3">
+<a class="py-3 px-4 bg-surface-container-low border border-outline-variant/20 rounded-sm text-center hover:bg-surface-container hover:border-primary/40 transition-all" href="#">
+<div class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] font-['JetBrains_Mono'] text-[0.7rem] uppercase tracking-widest">📧 Email</div>
+</a>
+<a class="py-3 px-4 bg-surface-container-low border border-outline-variant/20 rounded-sm text-center hover:bg-surface-container hover:border-primary/40 transition-all" href="#">
+<div class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] font-['JetBrains_Mono'] text-[0.7rem] uppercase tracking-widest">💼 LinkedIn</div>
+</a>
+<a class="py-3 px-4 bg-surface-container-low border border-outline-variant/20 rounded-sm text-center hover:bg-surface-container hover:border-primary/40 transition-all" href="#">
+<div class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] font-['JetBrains_Mono'] text-[0.7rem] uppercase tracking-widest">🐙 GitHub</div>
+</a>
+<a class="py-3 px-4 bg-surface-container-low border border-outline-variant/20 rounded-sm text-center hover:bg-surface-container hover:border-secondary/40 transition-all" href="#">
+<div class="text-[#E5E2E1]/60 hover:text-[#E5E2E1] font-['JetBrains_Mono'] text-[0.7rem] uppercase tracking-widest">💬 WhatsApp</div>
+</a>
+</div>
+<p class="font-['JetBrains_Mono'] text-[0.65rem] text-[#E5E2E1]/40 uppercase tracking-widest leading-tight text-center">
+          © 2026 Ferry Rachman Kurniawan.<br/>Engineered with Precision.
+        </p>
+</div>
+</div>
+</footer>
+<script src="js/script.js"></script>
+</body></html>
